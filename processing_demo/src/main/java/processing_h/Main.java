@@ -1,8 +1,10 @@
-//Name: Wren Nguyen
-//Project Name: Hello World & more!
-//Date: 8.29.2024
-//CRCP Coding III
-
+/*
+Name: Wren Nguyen
+Project Name: Hello World & more!
+Date: 8.29.2024
+Description: 5 shapes on display with a background that can change colors when
+clicking the mouse. It also prints Hello World.
+*/
 package processing_h;
 
 import processing.core.*;
