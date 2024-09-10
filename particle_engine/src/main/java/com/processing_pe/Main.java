@@ -1,7 +1,7 @@
 /*
 Name: Wren Nguyen
 Project Name: Particle Engine
-Date: 9.5.2024
+Date: 9.10.2024
 Description: 502 particles total.
 - If 'Q' is pressed, the speed increase and the squares move down and to the right.
 - If 'W' is pressed, the speed increase and the squares move down and to the left.
@@ -14,6 +14,8 @@ Description: 502 particles total.
 */
 
 package com.processing_pe;
+import java.util.ArrayList;
+
 import processing.core.*; //import Processing
 
 public class Main extends PApplet{
@@ -22,6 +24,7 @@ public class Main extends PApplet{
     int max = 251; //maximum number of squares
 
     //ARRAYS
+    //ArrayList<Square> arrayUno;
     Square arrayOne[] = new Square [max]; //1st array holding  squares
     Square arrayTwo[] = new Square [max]; //2nd array holding squares
 
@@ -34,23 +37,25 @@ public class Main extends PApplet{
     int black = color(0); //black
     int white = color(255); //white
 
+
     public static void main(String[] args) { 
         PApplet.main("com.processing_pe.Main");
     }
 
     public void settings(){
         size(1280,720); //size of canvas
-    
-        //draw squares and store them into the array
+
+        //draws a square and store them into the array
         for (int i = 0; i<arrayOne.length; i++){
-            arrayOne[i] = new Square();
+            arrayOne[i] = new Square(this);
         } 
         for (int i = 0; i<arrayTwo.length; i++){
-            arrayTwo[i] = new Square();
+            arrayTwo[i] = new Square(this);
         }
     }
 
     public void setup(){
+
     }
 
     public void draw(){ //draw
@@ -61,8 +66,7 @@ public class Main extends PApplet{
             //if mouse on the right, colors is blue
             if (mouseX > width/2){
                 fill(blue);
-            } 
-            else { //on the left, color is pink
+            } else { //on the left, color is pink
                 fill(pink);
             }
             //draws the squares from Square class
@@ -76,10 +80,10 @@ public class Main extends PApplet{
             //if mouse on the bottom, colors is purple
             if (mouseY > height/2){
                 fill(purple);
-            } 
-            else { //on the top, color is yellow
+            } else { //on the top, color is yellow
                 fill(yellow);
             }
+
             //draw squares from Square class
             obj.bounce();
             obj.click();
