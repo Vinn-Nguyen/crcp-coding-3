@@ -1,7 +1,7 @@
 /*
 Name: Wren Nguyen
 Project Name: Particle Engine
-Date: 9.10.2024
+Date: 9.12.2024
 Description: 502 particles total.
 - If 'Q' is pressed, the speed increase and the squares move down and to the right.
 - If 'W' is pressed, the speed increase and the squares move down and to the left.
@@ -14,8 +14,7 @@ Description: 502 particles total.
 */
 
 package com.processing_pe;
-import java.util.ArrayList;
-
+import java.util.ArrayList; //import Arraylists
 import processing.core.*; //import Processing
 
 public class Main extends PApplet{
@@ -24,9 +23,9 @@ public class Main extends PApplet{
     int max = 251; //maximum number of squares
 
     //ARRAYS
-    //ArrayList<Square> arrayUno;
-    Square arrayOne[] = new Square [max]; //1st array holding  squares
-    Square arrayTwo[] = new Square [max]; //2nd array holding squares
+    Animate squares;
+   // Square arrayOne[] = new Square [max]; //1st array holding  squares
+    //Square arrayTwo[] = new Square [max]; //2nd array holding squares
 
     //COLOR VALUES
     int alpha = 200; //transparent value
@@ -46,12 +45,12 @@ public class Main extends PApplet{
         size(1280,720); //size of canvas
 
         //draws a square and store them into the array
-        for (int i = 0; i<arrayOne.length; i++){
+        /*for (int i = 0; i<arrayOne.length; i++){
             arrayOne[i] = new Square(this);
         } 
         for (int i = 0; i<arrayTwo.length; i++){
             arrayTwo[i] = new Square(this);
-        }
+        }*/
     }
 
     public void setup(){
@@ -60,8 +59,9 @@ public class Main extends PApplet{
 
     public void draw(){ //draw
         background (black); //black bg 
-    
-        //display arrayOne
+        squares.draw();
+
+        /*//display arrayOne
         for (Square obj : arrayOne){
             //if mouse on the right, colors is blue
             if (mouseX > width/2){
@@ -88,6 +88,6 @@ public class Main extends PApplet{
             obj.bounce();
             obj.click();
             obj.display();  
-        }
+        }*/
     }
 }

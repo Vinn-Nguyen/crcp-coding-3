@@ -74,38 +74,10 @@ class Square {
     if (main.mousePressed && (main.mouseButton == main.RIGHT)){ 
       main.black = main.white;
     }
-    }
-  
-  /* public void draw(){ //draw everything
-    background (black); //black bg 
-    
-    //display arrayOne
-    for (Square obj : arrayOne){
-      //if mouse on the right, colors is blue
-      if (mouseX > width/2){
-        fill(blue);
-      } else { //on the left, color is pink
-        fill(pink);
-      }
-      //draws the squares from Square class
-      obj.bounce();
-      obj.click();
-      obj.display();
-    }
-    
-    //display arrayTwo
-    for (Square obj : arrayTwo){
-      //if mouse on the bottom, colors is purple
-      if (mouseY > height/2){
-        fill(purple);
-      } else { //on the top, color is yellow
-        fill(yellow);
-      }
+  }
 
-      //draw squares from Square class
-      obj.bounce();
-      obj.click();
-      obj.display();  
-    }
-  }*/
+  public void draw(){
+    
+  }
+  
 }
