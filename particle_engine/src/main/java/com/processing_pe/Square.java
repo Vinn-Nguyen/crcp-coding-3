@@ -2,7 +2,8 @@
 Name: Wren Nguyen
 Project Name: Particle Engine
 Date: 9.9.2024
-Description: This class contains the info for a single square to bounce. 
+Description: This class contains the info to draw a bouncing square, and contains
+all the commands its able to do.
 */
 
 package com.processing_pe;
@@ -32,12 +33,10 @@ class Square {
     speedY = main.random(-2, 2);
   }
 
-  public void display(){ //show the square
-    main.rectMode(main.CENTER);
-    main.rect(shapeX, shapeY, sz, sz); //draw square
+  public Square(Animate animate) { //connects square to animate
   }
 
-  public void bounce(){ //makes the squares bounce
+  void bounce(){ //makes the squares bounce
     shapeX = shapeX + speedX; //moves the x position
     shapeY = shapeY + speedY; //moves the y position
 
@@ -62,22 +61,17 @@ class Square {
       shapeY = shapeY + speedY - 1;
     }
   }
-
-  public void click(){ //stuff happens when the mouse is clicked.
+  
+  void click(){ //stuff happens when the mouse is clicked.
     //left click reverses speed
     if (main.mousePressed && (main.mouseButton == main.LEFT)){ 
       speedX = speedX * -1;
       speedY = speedY * -1;
     }
-
-    //right click changes background color
-    if (main.mousePressed && (main.mouseButton == main.RIGHT)){ 
-      main.black = main.white;
-    }
   }
 
-  public void draw(){
-    
+  public void draw(){ //draw the square
+    main.rect(shapeX, shapeY, sz, sz);
+    bounce();
   }
-  
 }
