@@ -2,9 +2,10 @@ package com.petwo;
 import java.util.ArrayList;
 import processing.core.*;
 
-public class Squares {
+public class Squares{
     PApplet main;
-    ArrayList<Square> squares = new ArrayList<>(400);
+    ArrayList<Square> squArray = new ArrayList<Square>();
+    int sqCount = 10;
     Square square;
 
     Squares(PApplet main_){
@@ -13,19 +14,22 @@ public class Squares {
 
     void setup(){
         main.background(0);
-        square = new Square(main.width/2.0f, main.height*.10f, 50.f, main, main.color(255));
+        for(int i = 0; i < sqCount; i++){
+            squArray.add(new Square(main.random(main.width), main.random(main.height), 10.f, main, main.color(255)));
+        }
+
     }
 
     void draw(){
-        main.noStroke();
         main.background(0);
-        square.draw();
-        for(Squares square : squares){
-            
+        for(Square square : squArray){
+            square.draw();
         }
     }
 
     void mousePressed(){
-        square.faster();
+        for(Square square : squArray){
+            square.faster();
+        }  
     }
 }

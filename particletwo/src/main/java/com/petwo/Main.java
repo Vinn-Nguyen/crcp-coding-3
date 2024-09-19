@@ -9,7 +9,7 @@ public class Main extends PApplet{
     }
 
     public void settings(){
-        size(500, 500);
+        size(1000, 700);
         squares = new Squares(this);
     }
     

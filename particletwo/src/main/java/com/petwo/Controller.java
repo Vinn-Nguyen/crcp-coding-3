@@ -1,8 +1,10 @@
 package com.petwo;
+import java.util.ArrayList;
 import processing.core.*;
 
-public class Square {
+public class Controller {
     PApplet main;
+
     float x, y; //x and y position
     float speedX = 1; //speed of x
     float speedY = 1; //speed of y
@@ -10,23 +12,17 @@ public class Square {
     float directionY = 1; //direction of y
     float sz; //size of square
     float half; //radius of square
-    int rectColor; //color
+    int color; //color
 
-    Square(float x_, float y_, float sz_, PApplet main_, int c){
+    void Shape(float x_, float y_, float sz_, PApplet main_, int c){
         x = x_;
         y = y_;
         sz = sz_;
-        rectColor = c;
+        color = c;
 
         main = main_;
     }
 
-    void draw(){
-        main.rectMode(main.CENTER);
-        main.rect(x, y, sz, sz);
-        move();
-    }
-  
     void move(){
         half = sz/2;
         y += speedY * directionY;
