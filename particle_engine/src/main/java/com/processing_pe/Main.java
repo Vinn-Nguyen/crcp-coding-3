@@ -1,7 +1,7 @@
 /*
 Name: Wren Nguyen
 Project Name: Particle Engine
-Date: 9.10.2024
+Date: 9.16.2024
 Description: 502 particles total.
 - If 'Q' is pressed, the speed increase and the squares move down and to the right.
 - If 'W' is pressed, the speed increase and the squares move down and to the left.
@@ -14,7 +14,6 @@ Description: 502 particles total.
 */
 
 package com.processing_pe;
-import java.util.ArrayList;
 
 import processing.core.*; //import Processing
 
