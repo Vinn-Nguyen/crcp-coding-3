@@ -1,29 +1,65 @@
+/*
+ Name: Wren Nguyen
+ Date: 9.21.2024
+ Description: This object controlls all the shapes and everything relating to it
+ */
+
 package com.petwo;
 import java.util.ArrayList;
 import processing.core.*;
 
 public class Controller {
     PApplet main;
+    Shapes shapes;
+    Avatar avatar;
+    ArrayList<Food> food;
+    int foodCount = 5;
 
-    float x, y; //x and y position
-    float speedX = 1; //speed of x
-    float speedY = 1; //speed of y
-    float directionX = 1; //direction of x
-    float directionY = 1; //direction of y
-    float sz; //size of square
-    float half; //radius of square
-    int color; //color
-
-    void Shape(float x_, float y_, float sz_, PApplet main_, int c){
-        x = x_;
-        y = y_;
-        sz = sz_;
-        color = c;
-
+    Controller(PApplet main_){
         main = main_;
+        init();
+        
+        //shapes = new Shapes(main_, 20, 255);
+        //shapes.spawn(); //locate it somewhere on the screen
     }
 
-    void move(){
+    //initalize the game objects
+    public void init(){
+        avatar = new Avatar(main);
+        food = new ArrayList<>();
+        for(int i =0; i < foodCount; i++){
+            food.add(new Food(main));
+        }
+    }
+
+    public void draw(){
+        main.background(0);  
+        display();  
+        collisions();
+    }
+
+    //display all game objects
+    public void display(){
+        avatar.display();
+        for(int i =0; i < foodCount; i++){
+            food.get(i).display();
+        }
+    }
+
+    //collisions of all the objects
+    public void collisions(){
+        for(int i =0; i < food.size(); i++){
+            avatar.collision(food.get(i));
+            food.get(i).collision(avatar);
+        }
+    }
+
+    public void setAvatar(float x, float y){
+        avatar.setStart(x, y);
+
+    }
+
+   /* void move(){
         half = sz/2;
         y += speedY * directionY;
         x += speedX * directionX;
@@ -40,5 +76,5 @@ public class Controller {
     void faster(){
         speedX++;
         speedY++;
-    }
+    }*/ 
 }
