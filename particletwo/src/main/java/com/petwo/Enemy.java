@@ -9,24 +9,6 @@ import processing.core.*;
 
 public class Enemy extends NPC{ //inherits from NPC
     Enemy(PApplet main_){
-        super(main_,50, main_.color(255,0,0), 2);
+        super(main_,60, main_.color(255,0,0), 1);
     }
-
-    //move function
-    void move(){
-        half = sz/2; //half the size
-        y = y + speedY; //movement of Y
-        x = x + speedX; //movement of X
-
-        //allows shapes to bounce off the left and right of screen
-        if(x - half < 0 || x + half > main.width){
-            speedX = speedX * -1;
-        }
-
-        //allows shapes to bounce off the top and bottom of screen
-        if(y - half < 0 || y + half > main.height){
-            speedY = speedY * -1;
-        }
-    }
-
 }

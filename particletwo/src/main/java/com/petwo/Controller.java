@@ -14,14 +14,14 @@ public class Controller {
     //declar other classes
     Shapes shapes;
     Avatar avatar;
+    Enemy enemies;
 
     //array list for multiple food objects
     ArrayList<Food> food;
-    int foodCount = 5; //number of food objects
-
+    int foodCount = 15; //number of food objects
     //array list for multiple enemy objects
     ArrayList<Enemy> enemy;
-    int enemyCount = 3; //number of enemy objects
+    int enemyCount = 4; //number of enemy objects
 
     Controller(PApplet main_){
         main = main_;
@@ -32,6 +32,8 @@ public class Controller {
     public void init(){
         //init the classes
         avatar = new Avatar(main);
+        enemies = new Enemy(main);
+        
         food = new ArrayList<>();
         enemy = new ArrayList<>();
         
@@ -47,8 +49,7 @@ public class Controller {
     //animate game objects
     public void draw(){
         //background
-        main.background(0); 
-
+        main.background(0);
         //functions
         display(); 
         collisions();
@@ -73,6 +74,11 @@ public class Controller {
         for(int i =0; i < enemyCount; i++){
             enemy.get(i).move();
         }
+
+        for(int i = 0; i < foodCount; i++){
+            food.get(i).move();
+        }
+        enemies.collision(enemies);
     }
 
     //collisions of all the objects
@@ -87,6 +93,11 @@ public class Controller {
         for(int i =0; i < enemy.size(); i++){
             avatar.collision(enemy.get(i));
             enemy.get(i).collision(avatar);
+        }
+
+        for(int i =0; i<enemy.size(); i++){
+            enemies.collision(enemy.get(i));
+            enemy.get(i).collision(enemies);
         }
     }
 

@@ -13,13 +13,14 @@ public class NPC extends Shapes{ //inherits from Shapes
     NPC(PApplet main_, float sz_, int color_, int shapeType_){
         super(main_, sz_, color_, shapeType_);
         spawn(); //call spawn
+        move();
     }
 
     //spawns the shape in a random location at a random speed
     void spawn(){
         //random x and y
-        x = main.random(main.width);
-        y = main.random(main.height);
+        x = main.random(sz, main.width - sz - 2);
+        y = main.random(sz , main.height - sz - 2);
 
         //random speed
         speedX = main.random(-3, 3);
@@ -33,4 +34,19 @@ public class NPC extends Shapes{ //inherits from Shapes
         }
     }
 
+    //move function
+    void move(){
+        half = sz/2; //half the size
+        y = y + speedY; //movement of Y
+        x = x + speedX; //movement of X
+
+        //allows shapes to bounce off the left and right of screen
+        if(x - half < 0 || x + half > main.width){
+            speedX = speedX * -1;
+        }
+        //allows shapes to bounce off the top and bottom of screen
+        if(y - half < 0 || y + half > main.height){
+            speedY = speedY * -1;
+        }
+    }
 }

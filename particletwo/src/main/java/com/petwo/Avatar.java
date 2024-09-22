@@ -12,7 +12,7 @@ public class Avatar extends Shapes {
     int health = 10;
 
     Avatar(PApplet main_){
-        super(main_,45, main_.color(0,0,255), 1);
+        super(main_,45, main_.color(0, 0, 255), 3);
         x = main.width/2;
         y = main.height/2;
     }

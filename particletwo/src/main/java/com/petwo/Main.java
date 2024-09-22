@@ -8,6 +8,7 @@ package com.petwo;
 import processing.core.*;
 
 public class Main extends PApplet{
+
     Controller controller; //calls the controller
 
     public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class Main extends PApplet{
     }
 
     public void settings(){
-        size(1000, 700); //canvas size
+        size(700, 700); //canvas size
         controller = new Controller(this); //init controller
     }
     

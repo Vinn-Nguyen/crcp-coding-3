@@ -22,6 +22,7 @@ public class Shapes {
 
     int shapeType; //draws the shape type: 1 = rect | 2 = circle
 
+
     //Superclass parent
     Shapes(PApplet main_, float sz_, int color_, int shapeType_){
         main = main_;
@@ -33,12 +34,16 @@ public class Shapes {
     //displays all objects
     void display(){
         main.fill(color); //colors object
-        if(shapeType == 1){ //checks shape type to draw square
+        main.noStroke();
+        if(shapeType == 1){ //draw rectangle for enemies
             main.rectMode(PApplet.CENTER);
-            main.rect(x, y, sz, sz);
+            main.rect(x, y, sz, sz + 10);
         }
-        else{ //draws circles for the other objects
+        else if (shapeType == 2 ){ //draws circles for food 
             main.ellipse(x, y, sz, sz);
+        }
+        else{ //draws squares for avatar
+            main.square(x, y, sz);
         }
     }
 
