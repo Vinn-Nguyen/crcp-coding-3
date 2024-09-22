@@ -1,6 +1,6 @@
 /*
  Name: Wren Nguyen
- Date: 9.21.2024
+ Date: 9.22.2024
  Description: Superclass for all the shapes within the Particle Engine
  */
 
@@ -13,41 +13,41 @@ public class Shapes {
 
     //UNITS
     float x, y; //x and y position
-    float speedX, speedY; //speed of y
-    float directionX, directionY; //direction of movement
+    float speedX = 1; //speed of x
+    float speedY = 1; //speed of y
     float sz; //size of object
+    float half; //half of the object's size
     int color; //color
     boolean hit; //collision boolean for when objects interact
 
-    Shapes(PApplet main_, float sz_, int color_){
+    int shapeType; //draws the shape type: 1 = rect | 2 = circle
+
+    //Superclass parent
+    Shapes(PApplet main_, float sz_, int color_, int shapeType_){
         main = main_;
         sz = sz_;
         color = color_;
-
+        shapeType = shapeType_;
     }
 
     //displays all objects
     void display(){
-        main.fill(color);
-        main.rectMode(main.CENTER);
-        main.rect(x, y, sz, sz);
+        main.fill(color); //colors object
+        if(shapeType == 1){ //checks shape type to draw square
+            main.rectMode(PApplet.CENTER);
+            main.rect(x, y, sz, sz);
+        }
+        else{ //draws circles for the other objects
+            main.ellipse(x, y, sz, sz);
+        }
     }
 
-    //test the collision of shapes
+    //collision between objects
     boolean isHit(Shapes shapes){
         float distance = PApplet.dist(x, y, shapes.getX(), shapes.getY());
         return (distance < sz/2 + shapes.getSz()/2);
     }
-
-    void spawn(){
-        x = main.random(main.width);
-        y = main.random(main.height);
-
-        speedX = main.random(-10, 10);
-        speedY = main.random(-10, 10);
-
-    }
-
+    //functions to get the X, Y, and object Size
     float getX(){
         return x;
     }

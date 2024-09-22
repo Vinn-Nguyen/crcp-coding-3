@@ -1,39 +1,35 @@
 /*
  Name: Wren Nguyen
- Date: 9.21.2024
- Description: Shows the inheritance interactions
+ Date: 9.22.2024
+ Description: Particle Engine 2
  */
 
 package com.petwo;
 import processing.core.*;
 
 public class Main extends PApplet{
-    Controller controller; //controls the shapes and everything related to it
-    Squares squares;
+    Controller controller; //calls the controller
+
     public static void main(String[] args) {
-        PApplet.main("com.petwo.Main");
+        PApplet.main("com.petwo.Main"); //runs processing
     }
 
     public void settings(){
-        size(1000, 700);
-        controller = new Controller(this);
-        //squares = new Squares(this);
+        size(1000, 700); //canvas size
+        controller = new Controller(this); //init controller
     }
     
     public void setup(){
-        //squares.setup();
     }
 
     public void draw(){
-        controller.draw();
-       //squares.draw();
+        controller.draw(); //draws from the controller
     }
 
     public void mousePressed(){
-        //squares.mousePressed();
     }
 
     public void mouseDragged(){
-        controller.setAvatar(mouseX, mouseY);
+        controller.setAvatar(mouseX, mouseY); //allows avatar to be dragged
     }
 }
