@@ -8,7 +8,7 @@ package com.petwo;
 import processing.core.*;
 
 public class Shapes {
-    PApplet main; //processing functionality
+    static PApplet main; //processing functionality
     Shapes shapes;
 
     //UNITS
@@ -35,20 +35,20 @@ public class Shapes {
     void display(){
         main.fill(color); //colors object
         main.noStroke();
-        if(shapeType == 1){ //draw rectangle for enemies
+        
+        if(shapeType == 1){ //draw square for enemies
             main.rectMode(PApplet.CENTER);
-            main.rect(x, y, sz, sz + 10);
+            main.rect(x, y, sz, sz);
         }
         else if (shapeType == 2 ){ //draws circles for food 
             main.ellipse(x, y, sz, sz);
         }
-        else{ //draws squares for avatar
-            main.square(x, y, sz);
+        else{ //draws rectangle for avatar
+            main.rect(x, y, sz+20, sz);
         }
     }
-
-    //collision between objects
-    boolean isHit(Shapes shapes){
+    
+    boolean isHit(Shapes shapes){ //collision between objects
         float distance = PApplet.dist(x, y, shapes.getX(), shapes.getY());
         return (distance < sz/2 + shapes.getSz()/2);
     }

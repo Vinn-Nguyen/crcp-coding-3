@@ -8,16 +8,19 @@ package com.petwo;
 import processing.core.*;
 
 public class NPC extends Shapes{ //inherits from Shapes
+    //call objects
+    Food food;
+    Enemy enemy;
+    Trash trash;
 
-    //NPC container
-    NPC(PApplet main_, float sz_, int color_, int shapeType_){
+    NPC(PApplet main_, float sz_, int color_, int shapeType_){  //NPC container
         super(main_, sz_, color_, shapeType_);
-        spawn(); //call spawn
+        spawn();
         move();
+        reverse();
     }
 
-    //spawns the shape in a random location at a random speed
-    void spawn(){
+    void spawn(){  //spawns the shape in a random location at a random speed
         //random x and y
         x = main.random(sz, main.width - sz - 2);
         y = main.random(sz , main.height - sz - 2);
@@ -27,15 +30,24 @@ public class NPC extends Shapes{ //inherits from Shapes
         speedY = main.random(-3, 3);
     }
 
-    //when there is a collision, the shape will spawn at a different location
-    void collision(Shapes shapes){
+    void reverse(){ //bounce
+        speedX = speedX * -1;
+        speedY = speedY * -1;
+    }
+
+    void collision(Shapes shapes){ //when there is a collision, the shape will spawn at a different location
         if(isHit(shapes)){
             spawn();
         }
     }
 
-    //move function
-    void move(){
+    void enemyCollision(NPC npc){ //when there is a collision between NPCs, the shape will bounce
+        if(isHit(npc)){
+            reverse();
+        }
+    }
+
+    void move(){ //move function
         half = sz/2; //half the size
         y = y + speedY; //movement of Y
         x = x + speedX; //movement of X
@@ -48,5 +60,11 @@ public class NPC extends Shapes{ //inherits from Shapes
         if(y - half < 0 || y + half > main.height){
             speedY = speedY * -1;
         }
+    }
+
+    void keyPressed(){
+        food.colorChange();
+        enemy.shapeChange();
+        trash.szChange();
     }
 }

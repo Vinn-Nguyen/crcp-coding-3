@@ -2,6 +2,10 @@
  Name: Wren Nguyen
  Date: 9.22.2024
  Description: Particle Engine 2
+ - Avatar is the blue rectangle, Food is green circles, Trash is white circles, Enemies are red squares.
+ - Food increase health by 1. Trash resets health back to 0. Enemies reduce health by 1.
+ - Enemies are *supposed* to bounce off of each other.
+ - When 'Q' key is pressed, Food will change color, Trash will increase in size, and Enemy will become 
  */
 
 package com.petwo;
@@ -27,7 +31,8 @@ public class Main extends PApplet{
         controller.draw(); //draws from the controller
     }
 
-    public void mousePressed(){
+    public void keyPressed(){
+        controller.keyPressed(); //mouse pressed commands from controller
     }
 
     public void mouseDragged(){
