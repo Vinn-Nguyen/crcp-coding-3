@@ -1,7 +1,7 @@
 /*
  Name: Wren Nguyen
- Date: 9.22.2024
- Description: Information for the avatar object is stored here. Avatar is blue and drawn as a square.
+ Date: 9.23.2024
+ Description: Information for the avatar object is stored here. Avatar is blue and drawn as a rectangle.
  */
 
 package com.petwo;

@@ -1,6 +1,6 @@
 /*
  Name: Wren Nguyen
- Date: 9.22.2024
+ Date: 9.23.2024
  Description: Superclass for all the shapes within the Particle Engine
  */
 
@@ -19,8 +19,7 @@ public class Shapes {
     float half; //half of the object's size
     int color; //color
     boolean hit; //collision boolean for when objects interact
-
-    int shapeType; //draws the shape type: 1 = rect | 2 = circle
+    int shapeType; //draws the shape type: 1 = squares | 2 = circle | 3 = rectangle
 
 
     //Superclass parent
@@ -52,6 +51,7 @@ public class Shapes {
         float distance = PApplet.dist(x, y, shapes.getX(), shapes.getY());
         return (distance < sz/2 + shapes.getSz()/2);
     }
+
     //functions to get the X, Y, and object Size
     float getX(){
         return x;

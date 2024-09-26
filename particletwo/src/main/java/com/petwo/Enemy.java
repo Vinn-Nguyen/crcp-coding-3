@@ -1,7 +1,7 @@
 /*
  Name: Wren Nguyen
  Date: 9.22.2024
- Description: Information for the enemy objects is stored here. Enemy is red and drawn as a circle.
+ Description: Information for the enemy objects is stored here. Enemy is red and drawn as a squares.
  */
 
 package com.petwo;

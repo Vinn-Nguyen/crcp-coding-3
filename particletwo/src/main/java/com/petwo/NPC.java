@@ -62,7 +62,7 @@ public class NPC extends Shapes{ //inherits from Shapes
         }
     }
 
-    void keyPressed(){
+    void keyPressed(){ //activate the keypressed from the objects
         food.colorChange();
         enemy.shapeChange();
         trash.szChange();
