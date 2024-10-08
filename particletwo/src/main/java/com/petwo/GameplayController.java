@@ -16,6 +16,7 @@ public class GameplayController extends GameController {
     Enemy enemies;
     Food foods;
 
+    //declare arraylists
     ArrayList<Shapes> gameObjects;
     ArrayList<NPC> npcs;
 
@@ -41,7 +42,7 @@ public class GameplayController extends GameController {
         enemy = new ArrayList<>();
         trash = new ArrayList<>();
         
-        //loops that create the arrayslist's containers
+        //loops that create the objects
         for(int i =0; i < foodCount; i++){
             food.add(new Food(main));
         }
@@ -53,7 +54,7 @@ public class GameplayController extends GameController {
             trash.add(new Trash(main));
         }
 
-        //int the npcs
+        //init the npcs
         npcs = new ArrayList<>();
         npcs.addAll(food);
         npcs.addAll(enemy);
@@ -120,7 +121,7 @@ public class GameplayController extends GameController {
         setAvatar(main.mouseX, main.mouseY);
     }
 
-    public void reset(){
+    public void reset(){ //reset game
         super.reset();
         init();
     }

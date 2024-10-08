@@ -1,10 +1,16 @@
-package com.petwo;
+/*
+Name: Wren Nguyen
+Date: October 2024
+Description:
+*/
+
+package com.pefour;
 import processing.core.*;
 
 public abstract class GameController {
     PApplet main;
 
-    //controller variables
+    //controller states
     int nextController = -1;
     static final int DO_NOT_CHANGE= -1; //default
     static final int GAME_PLAY = 0; //gameplay
@@ -23,7 +29,7 @@ public abstract class GameController {
         //do nothing
     }
 
-    //switch game states?
+    //do you switch game state?
     public int switchController(){
         return nextController;
     }

@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pe_three</groupId>
-    <artifactId>pe_three</artifactId>
+    <groupId>com.pefour</groupId>
+    <artifactId>pe_four</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-   <properties>
+    <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
