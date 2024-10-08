@@ -123,4 +123,9 @@ public class GameplayController extends GameController {
     public void keyPressed(){
 
     }
+
+    public void reset(){
+        super.reset();
+        init();
+    }
 }

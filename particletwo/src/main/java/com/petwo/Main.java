@@ -35,7 +35,9 @@ public class Main extends PApplet{
     public void draw(){
         controllers.get(curController).draw(); //draws from the controller
         if(controllers.get(curController).switchController() > -1){
-            curController = controllers.get(curController).switchController();
+            int nextControl = controllers.get(curController).switchController();
+            controllers.get(curController).reset();
+            curController = nextControl;
         }
     }
 

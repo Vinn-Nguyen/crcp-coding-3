@@ -17,4 +17,9 @@ public abstract class GameController {
     public int switchController(){
         return nextController;
     }
+
+    //reset controller to -1
+    public void reset(){
+        nextController = -1;
+    }
 }
