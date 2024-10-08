@@ -9,11 +9,15 @@
  */
 
 package com.petwo;
+import java.util.ArrayList;
 import processing.core.*;
 
 public class Main extends PApplet{
-
-    GameController controller; //calls the controller
+    //init
+    ArrayList<GameController> controllers = new ArrayList<>();
+    int gameplay = 0;
+    int end = 1;
+    int curController = 0;
 
     public static void main(String[] args) {
         PApplet.main("com.petwo.Main"); //runs processing
@@ -21,17 +25,25 @@ public class Main extends PApplet{
 
     public void settings(){
         size(700, 700); //canvas size
-        controller = new GameplayController(this); //init controller
+        controllers.add(new GameplayController(this));
+        controllers.add(new GameEndController(this));
     }
     
     public void setup(){
     }
 
     public void draw(){
-        controller.draw(); //draws from the controller
+        controllers.get(curController).draw(); //draws from the controller
+        if(controllers.get(curController).switchController() > -1){
+            curController = controllers.get(curController).switchController();
+        }
     }
 
     public void mouseDragged(){
-        controller.mouseDragged(); //allows avatar to be dragged
+        controllers.get(curController).mouseDragged(); //allows avatar to be dragged
+    }
+
+    public void keyPressed(){
+        controllers.get(curController).keyPressed();
     }
 }

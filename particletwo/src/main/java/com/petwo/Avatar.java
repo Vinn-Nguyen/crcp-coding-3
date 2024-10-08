@@ -24,18 +24,22 @@ public class Avatar extends Shapes {
     void collision(Shapes shapes){ //increase/decrease/reset health when interacting with NPCs
         hit = isHit(shapes);
         if(hit){
-            if(shapes instanceof Food){
+            if(shapes instanceof Food){ //food instance +1
                 health++;
                 PApplet.println("Increase! HP:" + health);
             }
-            else if(shapes instanceof Enemy){
+            else if(shapes instanceof Enemy){ //enemy instance -1
                 health--;
                 PApplet.println("Decrease! HP:" + health);
             }
             else if(shapes instanceof Trash){
-                health = health - health;
+                health = 1; //reset health to 1
                 PApplet.println("Gone! HP:" + health);
             }
         }
+    }
+
+    float getHealth(){
+        return health;
     }
 }

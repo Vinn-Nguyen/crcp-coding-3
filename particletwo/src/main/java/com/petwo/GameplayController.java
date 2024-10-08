@@ -57,6 +57,7 @@ public class GameplayController extends GameController {
         npcs = new ArrayList<>();
         npcs.addAll(food);
         npcs.addAll(enemy);
+        npcs.addAll(trash);
 
         //init the gameObjects (shapes)
         gameObjects = new ArrayList<>();
@@ -73,6 +74,11 @@ public class GameplayController extends GameController {
         display(); 
         collisions();
         move();
+
+        //check if game should stop -- if health <0
+        if (avatar.getHealth() <= 0){
+            nextController = 1; //switch
+        }
     }
 
     
@@ -112,5 +118,9 @@ public class GameplayController extends GameController {
 
     public void mouseDragged(){
         setAvatar(main.mouseX, main.mouseY);
+    }
+
+    public void keyPressed(){
+
     }
 }
