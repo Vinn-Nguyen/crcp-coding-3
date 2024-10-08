@@ -77,7 +77,7 @@ public class GameplayController extends GameController {
 
         //check if game should stop -- if health <0
         if (avatar.getHealth() <= 0){
-            nextController = 1; //switch
+            nextController = GameController.GAME_END; //switch
         }
     }
 
@@ -118,10 +118,6 @@ public class GameplayController extends GameController {
 
     public void mouseDragged(){
         setAvatar(main.mouseX, main.mouseY);
-    }
-
-    public void keyPressed(){
-
     }
 
     public void reset(){

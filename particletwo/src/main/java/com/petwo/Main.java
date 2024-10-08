@@ -15,9 +15,7 @@ import processing.core.*;
 public class Main extends PApplet{
     //init
     ArrayList<GameController> controllers = new ArrayList<>();
-    int gameplay = 0;
-    int end = 1;
-    int curController = 0;
+    int curController = GameController.GAME_PLAY;
 
     public static void main(String[] args) {
         PApplet.main("com.petwo.Main"); //runs processing
@@ -34,7 +32,7 @@ public class Main extends PApplet{
 
     public void draw(){
         controllers.get(curController).draw(); //draws from the controller
-        if(controllers.get(curController).switchController() > -1){
+        if(controllers.get(curController).switchController() > GameController.DO_NOT_CHANGE){
             int nextControl = controllers.get(curController).switchController();
             controllers.get(curController).reset();
             curController = nextControl;
