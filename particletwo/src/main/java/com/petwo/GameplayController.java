@@ -8,9 +8,7 @@ package com.petwo;
 import java.util.ArrayList;
 import processing.core.*;
 
-public class Controller {
-    PApplet main; //init processing
-
+public class GameplayController extends GameController {
     //declare other classes
     Shapes shapes;
     NPC npc;
@@ -31,19 +29,36 @@ public class Controller {
     int trashCount = 3;
 
 
-    Controller(PApplet main_){
-        main = main_;
+    GameplayController(PApplet main_){
+        super(main_);
         init(); //call to initalize
     }
 
     public void init(){  //initalize the game objects
         //init the classes
         avatar = new Avatar(main);
+        food = new ArrayList<>();
+        enemy = new ArrayList<>();
+        trash = new ArrayList<>();
         
+        //loops that create the arrayslist's containers
+        for(int i =0; i < foodCount; i++){
+            food.add(new Food(main));
+        }
+        for(int i =0; i < enemyCount; i++){
+            enemies = new Enemy(main);
+            enemy.add(new Enemy(main));
+        }
+        for(int i = 0; i < trashCount; i++){
+            trash.add(new Trash(main));
+        }
+
+        //int the npcs
         npcs = new ArrayList<>();
         npcs.addAll(food);
         npcs.addAll(enemy);
 
+        //init the gameObjects (shapes)
         gameObjects = new ArrayList<>();
         gameObjects.add(avatar);
         gameObjects.addAll(npcs);
@@ -95,9 +110,7 @@ public class Controller {
         avatar.setStart(x, y);
     }
 
-    void keyPressed(){ //keypressed from shapes
-        if(main.key == 'q'){
-            npc.keyPressed();
-        }
+    public void mouseDragged(){
+        setAvatar(main.mouseX, main.mouseY);
     }
 }

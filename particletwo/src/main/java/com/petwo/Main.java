@@ -13,7 +13,7 @@ import processing.core.*;
 
 public class Main extends PApplet{
 
-    Controller controller; //calls the controller
+    GameController controller; //calls the controller
 
     public static void main(String[] args) {
         PApplet.main("com.petwo.Main"); //runs processing
@@ -21,7 +21,7 @@ public class Main extends PApplet{
 
     public void settings(){
         size(700, 700); //canvas size
-        controller = new Controller(this); //init controller
+        controller = new GameplayController(this); //init controller
     }
     
     public void setup(){
@@ -31,11 +31,7 @@ public class Main extends PApplet{
         controller.draw(); //draws from the controller
     }
 
-    public void keyPressed(){
-        controller.keyPressed(); //mouse pressed commands from controller
-    }
-
     public void mouseDragged(){
-        controller.setAvatar(mouseX, mouseY); //allows avatar to be dragged
+        controller.mouseDragged(); //allows avatar to be dragged
     }
 }
