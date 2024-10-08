@@ -18,6 +18,9 @@ public class Controller {
     Enemy enemies;
     Food foods;
 
+    ArrayList<Shapes> gameObjects;
+    ArrayList<NPC> npcs;
+
     ArrayList<Food> food; //array list for multiple food objects
     int foodCount = 15; //number of food objects
     
@@ -36,21 +39,14 @@ public class Controller {
     public void init(){  //initalize the game objects
         //init the classes
         avatar = new Avatar(main);
-        food = new ArrayList<>();
-        enemy = new ArrayList<>();
-        trash = new ArrayList<>();
         
-        //loops that create the arrayslist's containers
-        for(int i =0; i < foodCount; i++){
-            food.add(new Food(main));
-        }
-        for(int i =0; i < enemyCount; i++){
-            enemies = new Enemy(main);
-            enemy.add(new Enemy(main));
-        }
-        for(int i = 0; i < trashCount; i++){
-            trash.add(new Trash(main));
-        }
+        npcs = new ArrayList<>();
+        npcs.addAll(food);
+        npcs.addAll(enemy);
+
+        gameObjects = new ArrayList<>();
+        gameObjects.add(avatar);
+        gameObjects.addAll(npcs);
     }
 
     
@@ -69,14 +65,8 @@ public class Controller {
         avatar.display(); 
 
         //loops display the multiple objects of the food and enemy objects
-        for(int i =0; i < foodCount; i++){
-            food.get(i).display();
-        }
-        for(int i =0; i < enemyCount; i++){
-            enemy.get(i).display();
-        }
-        for(int i =0; i < trashCount; i++){
-            trash.get(i).display();
+        for(int i =0; i < gameObjects.size(); i++){
+            gameObjects.get(i).display();
         }
     }
     
@@ -94,24 +84,10 @@ public class Controller {
     }
 
     public void collisions(){ //collisions of all the objects
-        //collision between avatar and food
-        for(int i =0; i < food.size(); i++){
-            avatar.collision(food.get(i));
-            food.get(i).collision(avatar);
-        }
-
-        //collision between avatar and enemy and between enemies
-        for(int i =0; i < enemy.size(); i++){
-            avatar.collision(enemy.get(i));
-            enemy.get(i).collision(avatar);
-            enemies.enemyCollision(enemy.get(i));
-            enemy.get(i).enemyCollision(enemies);
-        }
-
-        //collision between avatar and trash
-        for(int i =0; i < trash.size(); i++){
-            avatar.collision(trash.get(i));
-            trash.get(i).collision(avatar);
+        //collision between avatar and npcs
+        for(int i =0; i < npcs.size(); i++){
+            avatar.collision(npcs.get(i));
+            npcs.get(i).collision(avatar);
         }
     }
 
