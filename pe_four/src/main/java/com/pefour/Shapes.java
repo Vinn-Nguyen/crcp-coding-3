@@ -15,6 +15,7 @@ public class Shapes {
     float x, y; //x and y position
     float speedX = 1; //speed of x
     float speedY = 1; //speed of y
+    PImage sprite; //image file
     float sz; //size of object
     float half; //half of the object's size
     boolean hit; //collision boolean for when objects interact

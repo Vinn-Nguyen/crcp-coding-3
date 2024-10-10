@@ -10,7 +10,7 @@ import processing.core.*;
 public abstract class GameController {
     PApplet main;
 
-    //controller states
+    //controller variables
     int nextController = -1;
     static final int DO_NOT_CHANGE= -1; //default
     static final int GAME_PLAY = 0; //gameplay
@@ -29,7 +29,7 @@ public abstract class GameController {
         //do nothing
     }
 
-    //do you switch game state?
+    //switch game states?
     public int switchController(){
         return nextController;
     }
