@@ -7,7 +7,6 @@ Description:
 package com.pefour;
 import java.util.ArrayList;
 import processing.core.*;
-import java.awt.Image;
 
 
 public class Main extends PApplet{
@@ -34,7 +33,7 @@ public class Main extends PApplet{
     } //load images
 
     public void draw(){
-        av.display();
+        
         //controllers.get(curController).draw();
     }
 

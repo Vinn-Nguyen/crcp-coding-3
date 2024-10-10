@@ -8,7 +8,7 @@ package com.petwo;
 import processing.core.*;
 
 public class Trash extends NPC{ //inherits from NPC
-    Trash(PApplet main_){
+    Trash(Main main_){
         super(main_, 50, main_.color(255,255,255), 2);
     }
 

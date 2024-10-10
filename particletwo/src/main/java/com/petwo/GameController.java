@@ -2,7 +2,7 @@ package com.petwo;
 import processing.core.*;
 
 public abstract class GameController {
-    PApplet main;
+    Main main;
 
     //controller variables
     int nextController = -1;
@@ -10,7 +10,7 @@ public abstract class GameController {
     static final int GAME_PLAY = 0; //gameplay
     static final int GAME_END = 1; //game over screen
 
-    GameController(PApplet main_){
+    GameController(Main main_){
         main = main_;
     }
 

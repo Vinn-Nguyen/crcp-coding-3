@@ -13,7 +13,7 @@ public class NPC extends Shapes{ //inherits from Shapes
     Enemy enemy;
     Trash trash;
 
-    NPC(PApplet main_, float sz_, int color_, int shapeType_){  //NPC container
+    NPC(Main main_, float sz_, int color_, int shapeType_){  //NPC container
         super(main_, sz_, color_, shapeType_);
         spawn();
         move();
@@ -41,8 +41,8 @@ public class NPC extends Shapes{ //inherits from Shapes
         }
     }
 
-    void enemyCollision(NPC npc){ //when there is a collision between NPCs, the shape will bounce
-        if(isHit(npc)){
+    void enemyCollision(Enemy enemy){ //when there is a collision between NPCs, the shape will bounce
+        if(isHit(enemy)){
             reverse();
         }
     }

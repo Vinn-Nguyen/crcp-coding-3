@@ -10,8 +10,9 @@ import processing.core.PApplet;
 public class Avatar extends Shapes {
     int health = 10; //health
 
-    Avatar(PApplet main_){ //avatar container
-        super(main_,45, main_.color(0, 0, 255), 3);
+    Avatar(Main main_){ //avatar container
+        super(main_,45, main_.color(0, 0, 255));
+        sprite = main_.getSprite();
         x = main.width/2;
         y = main.height/2;
     }
@@ -19,6 +20,11 @@ public class Avatar extends Shapes {
     void setStart(float x_, float y_){ //start in the center of the screen
         x = x_;
         y = y_;
+    }
+
+    void display(){ //display custom sprite
+        main.imageMode(Main.CENTER);
+        main.image(sprite, x, y);
     }
 
     void collision(Shapes shapes){ //increase/decrease/reset health when interacting with NPCs
@@ -39,6 +45,7 @@ public class Avatar extends Shapes {
         }
     }
 
+    //check HP
     float getHealth(){
         return health;
     }

@@ -2,7 +2,7 @@ package com.petwo;
 import processing.core.*;
 
 public class GameEndController extends GameController{
-    GameEndController(PApplet main_){
+    GameEndController(Main main_){
         super(main_);
     }
 

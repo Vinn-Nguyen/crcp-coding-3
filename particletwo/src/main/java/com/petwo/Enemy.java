@@ -8,8 +8,8 @@ package com.petwo;
 import processing.core.*;
 
 public class Enemy extends NPC{ //inherits from NPC
-    Enemy(PApplet main_){
-        super(main_,60, main_.color(255,0,0), 1);
+    Enemy(Main main_){
+        super(main_, 60, main_.color(255,0,0));
     }
 
     //changes from squares to circles

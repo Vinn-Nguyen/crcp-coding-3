@@ -30,7 +30,7 @@ public class GameplayController extends GameController {
     int trashCount = 3;
 
 
-    GameplayController(PApplet main_){
+    GameplayController(Main main_){
         super(main_);
         init(); //call to initalize
     }

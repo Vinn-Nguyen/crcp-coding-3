@@ -16,12 +16,15 @@ public class Main extends PApplet{
     ArrayList<GameController> controllers = new ArrayList<>();
     int curController = GameController.GAME_PLAY; //current gamestate
 
+    static PImage AVATARIMG;
+
     public static void main(String[] args) {
         PApplet.main("com.petwo.Main"); //runs processing
     }
 
     public void settings(){
         size(700, 700); //canvas size
+        AVATARIMG = loadImage("/Users/vinnnguyen/Documents/Images/avatar.png");
 
         //add to controllers array
         controllers.add(new GameplayController(this));
@@ -47,5 +50,9 @@ public class Main extends PApplet{
 
     public void keyPressed(){
         controllers.get(curController).keyPressed(); //allows game to be reset
+    }
+
+    public PImage getSprite(){
+        return AVATARIMG;
     }
 }
