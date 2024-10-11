@@ -1,7 +1,7 @@
 /*
  Name: Wren Nguyen
- Date: 9.23.2024
- Description: Information for the avatar object is stored here. Avatar is blue and drawn as a rectangle.
+ Date: Oct.2024
+ Description: Information for the avatar object is stored here. Avatar is a cat.
  */
 
 package com.petwo;
@@ -11,7 +11,7 @@ public class Avatar extends Shapes {
     int health = 10; //health
 
     Avatar(Main main_){ //avatar container
-        super(main_,45, main_.color(0, 0, 255));
+        super(main_,45, main_.color(0, 0, 255), 3);
         sprite = main_.getSprite();
         x = main.width/2;
         y = main.height/2;

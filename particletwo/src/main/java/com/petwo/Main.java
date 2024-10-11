@@ -2,8 +2,8 @@
  Name: Wren Nguyen
  Date: October 2024
  Description: Particle Engine 4
- - Avatar is the blue rectangle, Food is green circles, Trash is white circles, Enemies are red squares.
- - Food increase health by 1. Trash resets health back to 1. Enemies reduce health by 1.
+ - 
+ - Starting health: 10. Food increase health by 1. Trash resets health back to 1. Enemies reduce health by 1.
  - When ' ' key is pressed, it will reset game
  */
 

@@ -20,20 +20,32 @@ public class Shapes {
     int color; //color
     boolean hit; //collision boolean for when objects interact
     int shapeType; //draws the shape type: 1 = squares | 2 = circle | 3 = rectangle
-    PImage sprite;
+    PImage sprite; //image for sprites
 
 
     //Superclass parent
-    Shapes(Main main_, float sz_, int color_){
+    Shapes(Main main_, float sz_, int color_, int shapeType_){
         main = main_;
         sz = sz_;
         color = color_;
+        shapeType = shapeType_;
     }
 
     //displays all objects
     void display(){
         main.fill(color); //colors object
         main.noStroke();
+        
+        if(shapeType == 1){ //draw square for enemies
+            main.rectMode(Main.CENTER);
+            main.rect(x, y, sz, sz);
+        }
+        else if (shapeType == 2 ){ //draws circles for food 
+            main.ellipse(x, y, sz, sz);
+        }
+        else{ //draws rectangle for avatar
+            main.rect(x, y, sz, sz);
+        }
     }
     
     boolean isHit(Shapes shapes){ //collision between objects

@@ -1,3 +1,9 @@
+/*
+ Name: Wren Nguyen
+ Date: Oct.2024
+ Description: GameController controlls game state
+ */
+
 package com.petwo;
 import processing.core.*;
 

@@ -1,3 +1,9 @@
+/*
+ Name: Wren Nguyen
+ Date: Oct.2024
+ Description: GameEnd is the end state when the player loses
+ */
+
 package com.petwo;
 import processing.core.*;
 
