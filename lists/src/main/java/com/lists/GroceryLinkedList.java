@@ -1,110 +1,128 @@
+/*
+ * Name: Wren Nguyen
+ * Date: Oct 2024
+ * Project: LinkedList Introduction
+ * Description: GroceryLinkedList compiles the linked lits and all of its commands
+ */
+
 package com.lists;
 
 public class GroceryLinkedList {
+    //VARIABLES
     private String food;
     private FoodNode head;
 
     public GroceryLinkedList(){
         head = null; //empty list
     }
-
-    //List
     
+    //PRINT: Traverse and print all the foods in a list
     public void print(){
+        //if the list empty
         if(isEmpty())
             System.out.println("List is empty");
         
-        FoodNode current = head;
-        while (current != null){
-            System.out.println(current.toString()); //print data
+        FoodNode current = head; //start at the head
+        while (current != null){ //while not at the end of the list
+            System.out.println(current.toString()); //print list
             current.nextFood(); //go to next node
         }
     }
     
+    //INSERT AT INDEX: insert a FoodNode at the indicated index WIP
     void insert(int index, FoodNode node){
-        if(isEmpty()){
-            head = node;
-        }
+        //if its empty, insert at the head of the list
+        if(isEmpty())
+            head = node; 
+        
         else{
-            FoodNode current = head;
-            while(current.nextFood()!= null){
+            FoodNode current = head; //traverse at the head
+            while(current.nextFood()!= null){ //while not the last node
                 current = current.nextFood();//go to the next node
-                current.setNext(node);
             }
+            current.setNext(node);//create insertion
         }
     }
 
-    public void insert(String food, FoodNode node){}
+    //INSERT AFTER FOOD: insert a foodnode after another specified food WIP
+    void insert(String food, FoodNode node){}
 
-    //prepend
-    public void insertAtStart(FoodNode node){
-        if(isEmpty()){
+    //INSERT AT START: insert at the start of the list (prepend)
+    void insertAtStart(FoodNode node){
+        //if its empty, insert at the head of the list
+        if(isEmpty())
             head = node;
-        }
+
         else{
-            FoodNode current = head;
-            while(current.nextFood()!= null){
-                current = current.nextFood();
+            FoodNode current = head; //traverse to the head
+            current.setNext(node); //insert node at head
+        }
+    }
+
+    //INSERT AT END: insert at the end of a list (append)
+    public void insertAtEnd(FoodNode node){
+        //if its empty, insert at the head of the list
+        if(isEmpty())
+            head = node; //Insert at head
+        
+        else{
+            FoodNode current = head; //traverse to the head
+            while(current.nextFood()!= null){ //while not the last node
+                current = current.nextFood();//go to the next node
+                current.setNext(node); //insert node at the end
             }
         }
     }
 
-    //append
-    public void insertAtEnd(FoodNode node){
-        if(head==null){
-            head = new FoodNode(food);
-            return;
-        }
-    }
-
-    //defines empty list
+    //ISEMPTY: defines empty list
     boolean isEmpty(){ 
         return head == null;
     }
 
-    //getName()
-    public String find(String food){
-        //if empty return -1
+    //FIND: find a specified food and return the index
+    public int find(int index){
+        //if the list is empty return 0
         if(isEmpty())
-            return "-1";
+            return 0;
         
-        //otherwise, return the food name
+        //return food node index
         else{
             FoodNode current = head;
-            while((current.nextFood() != null))
+            while((current.nextFood() != null) && (!current.foodName().equals(food)))
+                current = current.nextFood();
+                if(current.foodName().equals(food)) //finds the food based on the name
+                    return current.getIndex(); //returns current index
+
+                //if not found, returns -1
+                else
+                    return -1;
         }
     }
 
+    //REMOVE: remove a specified food
     public String remove(String food){
-        //empty list
+        //if its an empty list
         if(isEmpty())
-            return "List is empty";
-        
+            return "List is empty"; //returns empty list
+
+        //remove first node
         FoodNode current = head;
         FoodNode previous = null;
+        if(current.foodName().equals(food)){
+            head = current.nextFood(); //current is at the head
+            return "Removed" + current.toString(); //return what was deleted
+        }
 
-        if(current.foodName().equals(food)){
-            head = current.nextFood();
-            return "Removed" + current.toString();
+        //remove a named node
+        while((current.nextFood() != null) && (!current.foodName().equals(food))){ //while not at the end
+            previous = current;
+            current = current.nextFood();
+        } if(current.foodName().equals(food)){ //if the current name matches
+            previous.setNext(current.nextFood()); //replace the current with previous
+            return "Removed" + current.toString(); //return what was deleted
         }
-        while((current.nextFood() != null) &&
-        (!current.nextFood().equals(food))){
-        previous = current;
-        current = current.nextFood();
-        }
-        //remove named node
-        if(current.foodName().equals(food)){
-            previous.setNext(current.nextFood());
-            return "Removed" + current.toString();
-        } else
-        return("No entry for" + food);
+        //node not found
+        else
+            return ("No entry for " + food); //returns not found and name
     }
 }
-/*
-void insert( int index, FoodNode node ) -- insert a FoodNode at the indicated index
-void insert(String food, FoodNode node) -- insert a food after another specified food (HINT: use your find() and the other insert() method to help you )
-void insertAtStart(FoodNode node) -- insert a FoodNode at the start of the list (prepend)
-void insertAtEnd(FoodNode node) --insert a FoodNode at the end of the list (append)
-boolean isEmpty() -- return whether the list is empty
-int find(String food) -- find the specified food is your list. return the index of the food found and -1 if not found.
-void remove (String food) -- remove the specified food */
