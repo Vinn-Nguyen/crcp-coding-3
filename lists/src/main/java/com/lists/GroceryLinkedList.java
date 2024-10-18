@@ -29,23 +29,37 @@ public class GroceryLinkedList {
         }
     }
     
-    //INSERT AT INDEX: insert a FoodNode at the indicated index WIP
-    void insert(int index, FoodNode node){
-        //if its empty, insert at the head of the list
-        if(isEmpty())
-            head = node; 
-        
-        else{
-            FoodNode current = head; //traverse at the head
-            while(current.nextFood()!= null){ //while not the last node
-                current = current.nextFood();//go to the next node
-            }
-            current.setNext(node);//create insertion
+    //INSERT AT INDEX: insert a FoodNode at the indicated index 
+    void insert(FoodNode node, int index){
+        if(isEmpty()){
+            head = node; //Insert at head
         }
+        //insert at specified point
+        else{
+            FoodNode current = head; //traverse at head
+            for(int i=1; i < index && current != null; i++){ //find the index
+                current = current.nextFood();
+            }
+            current.setNext(node); //insert node at the end
+        } 
     }
 
     //INSERT AFTER FOOD: insert a foodnode after another specified food WIP
-    void insert(String food, FoodNode node){}
+    void insert(FoodNode node, String food){
+        if(isEmpty()){
+            head = node; //Insert at head
+        }
+        //insert at specified point
+        else{
+            FoodNode current = head; //traverse at head
+            while((current.nextFood() != null) && (!current.foodName().equals(food))){
+                current = current.nextFood();
+                if(current.foodName().equals(food)){
+                    current.setNext(node); //insert node at the end
+                }
+            }
+        } 
+    }
 
     //INSERT AT START: insert at the start of the list (prepend)
     void insertAtStart(FoodNode node){
@@ -53,6 +67,7 @@ public class GroceryLinkedList {
         if(isEmpty())
             head = node;
 
+        //inserts at the start of list
         else{
             FoodNode current = head; //traverse to the head
             current.setNext(node); //insert node at head
@@ -114,10 +129,12 @@ public class GroceryLinkedList {
         }
 
         //remove a named node
-        while((current.nextFood() != null) && (!current.foodName().equals(food))){ //while not at the end
+        //while not at the end & the food matches
+        while((current.nextFood() != null) && (!current.foodName().equals(food))){ 
             previous = current;
             current = current.nextFood();
-        } if(current.foodName().equals(food)){ //if the current name matches
+        }
+        if(current.foodName().equals(food)){ //if the current name matches
             previous.setNext(current.nextFood()); //replace the current with previous
             return "Removed" + current.toString(); //return what was deleted
         }

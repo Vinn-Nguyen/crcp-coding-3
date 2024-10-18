@@ -1,24 +1,38 @@
-/* Name: Wren Nguyen
+/* 
+ * Name: Wren Nguyen
  * Date: Oct 2024
  * Project: LinkedList Introduction
- * Description: FoodNode
+ * Description: FoodNode Class, contains all the getters and setters
 */
 
 package com.lists;
 
 public class FoodNode {
-    private String foodName;
-    private FoodNode next;
+    public String foodName;
+    public FoodNode next;
+    public int index;
+
+    public FoodNode(String foodName){
+        this.foodName = foodName;
+    }
+
+    //returns the next food
+    public FoodNode nextFood(){
+        return next;
+    }
     
+    //returns food name
     public String foodName(){
         return foodName;
     }
 
-    public FoodNode nextFood(){
-        return next;
+    //sets the next node
+    public void setNext(FoodNode nextPtr){
+        next = nextPtr;
     }
 
-    public void setNext(FoodNode nextPTr){
-        next = nextPTr;
+    //returns the index
+    public int getIndex(){
+        return index;
     }
 }
