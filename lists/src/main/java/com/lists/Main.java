@@ -9,13 +9,45 @@ package com.lists;
 
 public class Main {
     public static void main(String[] args) {
-        GroceryLinkedList test1 = new GroceryLinkedList();
-        test1.insertAtEnd(new FoodNode("milk"));
-        test1.insertAtEnd(new FoodNode("bananas"));
-        test1.insertAtEnd(new FoodNode("ice cream"));
-        test1.insertAtEnd(new FoodNode("spinach"));
-        test1.insertAtEnd(new FoodNode("chicken"));
+
+        //TEST 1
+        GroceryLinkedList test = new GroceryLinkedList();
+        test.insertAtEnd(new FoodNode("milk"));
+        test.insertAtEnd(new FoodNode("bananas"));
+        test.insertAtEnd(new FoodNode("ice cream"));
+        test.insertAtEnd(new FoodNode("spinach"));
+        test.insertAtEnd(new FoodNode("chicken"));
         System.out.println("Test 1");
-        test1.print(); //works when null
+        test.print(); //works when null
+
+        //TEST 2
+        System.out.println("Test 2");
+        System.out.println(test.remove("ice cream"));
+        test.print(); //works when null
+
+        //TEST 3
+        System.out.println("Test 3");
+        System.out.println(test.remove("chicken"));
+        test.print(); 
+
+        //TEST 4
+        System.out.println("Test 4");
+        System.out.println(test.find("spinach"));
+
+        //TEST 5
+        test.insertAtEnd(new FoodNode("eggs"));
+        System.out.println("Test 5");
+        System.out.println(test.find("eggs"));
+        test.print();
+
+        //TEST 6
+        System.out.println("Test 6");
+        test.insertAtStart(new FoodNode("onions"));
+        test.print();
+
+        //TEST 7
+        System.out.println("Test 7");
+        test.insert(new FoodNode("strawberries"), "bananas");
+        test.print();
     }
 }
