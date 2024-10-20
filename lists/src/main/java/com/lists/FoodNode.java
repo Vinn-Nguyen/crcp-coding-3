@@ -10,7 +10,6 @@ package com.lists;
 public class FoodNode {
     public String foodName;
     public FoodNode next;
-    public int index;
 
     public FoodNode(String foodName){
         this.foodName = foodName;
@@ -31,8 +30,7 @@ public class FoodNode {
         next = nextPtr;
     }
 
-    //returns the index
-    public int getIndex(){
+    public int getIndex(int index){
         return index;
     }
 }

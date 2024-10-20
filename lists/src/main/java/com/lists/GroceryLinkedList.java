@@ -9,11 +9,13 @@ package com.lists;
 
 public class GroceryLinkedList {
     //VARIABLES
-    private String food;
-    private FoodNode head;
+    public int index = 0;
+    public FoodNode head;
+    public FoodNode next;
 
     public GroceryLinkedList(){
-        head = null; //empty list
+        head = null;
+        next = null;
     }
     
     //PRINT: Traverse and print all the foods in a list
@@ -52,26 +54,30 @@ public class GroceryLinkedList {
         //insert at specified point
         else{
             FoodNode current = head; //traverse at head
+            head = current.nextFood();
             while((current.nextFood() != null) && (!current.foodName().equals(food))){
                 current = current.nextFood();
                 if(current.foodName().equals(food)){
-                    current.setNext(node); //insert node at the end
+                    current.setNext(node);
+                    index++; //insert node at the end
                 }
+                
             }
         } 
     }
 
-    //INSERT AT START: insert at the start of the list (prepend)
+    //INSERT AT START: insert at the start of the list (prepend) WIP
     void insertAtStart(FoodNode node){
         //if its empty, insert at the head of the list
         if(isEmpty())
-            head = node;
+            head = node; //insert at head
 
-        //inserts at the start of list
-        else{  
-            FoodNode current = head; //traverse to the head
-            current.setNext(node); //insert node at head
+        else{
+            FoodNode current = head;
+            head = node;
+            head.next = current;
         }
+        
     }
 
     //INSERT AT END: insert at the end of a list (append)
@@ -85,6 +91,7 @@ public class GroceryLinkedList {
             while(current.nextFood()!= null){ //while not the last node
                 current = current.nextFood();//go to the next node
             }
+            index++;
             current.setNext(node); //insert node at the end
         }
     }
@@ -97,22 +104,20 @@ public class GroceryLinkedList {
     //FIND: find a specified food and return the index WIP
     public int find(String food){
         //if the list is empty return 0
-        if(isEmpty())
+        if(isEmpty()){
             return 0;
-        
-        //return food node index
-        else{
-            FoodNode current = head;
-            while((current.nextFood() != null) && (!current.foodName().equals(food))) //traverse
-                current = current.nextFood();
-                if(current.foodName().equals(food)){ //finds the food based on the name
-                    return current.getIndex(); //return index
-                }
-                //if not found, returns -1
-                else{
-                    return -1;
-                }
         }
+
+        //return food node index
+        FoodNode current = head;
+        while((current.nextFood() != null)) //traverse
+            current = current.nextFood();
+            if(current.foodName().equals(food)){ //finds the food based on the name
+                return index; //return index
+            }
+            else {
+                return -1;
+            }
     }
 
     //REMOVE: remove a specified food
@@ -124,8 +129,10 @@ public class GroceryLinkedList {
         //remove first node
         FoodNode current = head;
         FoodNode previous = null;
+
         if(current.foodName().equals(food)){
             head = current.nextFood(); //current is at the head
+            index--;
             return "Removed" + current.foodName(); //return what was deleted
         }
 
@@ -137,6 +144,7 @@ public class GroceryLinkedList {
         }
         if(current.foodName().equals(food)){ //if the current name matches
             previous.setNext(current.nextFood()); //replace the current with previous
+            index--;
             return "Removed " + current.foodName(); //return what was deleted
         }
         //node not found
