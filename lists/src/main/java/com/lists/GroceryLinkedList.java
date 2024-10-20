@@ -22,25 +22,26 @@ public class GroceryLinkedList {
     public void print(){
         //if the list empty
         if(isEmpty())
-            System.out.println("List is empty");
+            System.out.println("List is empty.");
         
         FoodNode current = head; //start at the head
         while (current != null){ //while not at the end of the list
             System.out.println(current.foodName()); //print list
-            current = current.nextFood(); //go through list
+            current = current.next; //go through list
         }
     }
     
     //INSERT AT INDEX: insert a FoodNode at the indicated index 
-    void insert(FoodNode node, int index){
+    void insert(FoodNode node, int count){
         if(isEmpty()){
             head = node; //Insert at head
         }
         //insert at specified point
         else{
             FoodNode current = head; //traverse at head
-            for(int i=1; i < index && current != null; i++){ //find the index
+            for(int i=1; i < count && current != null; i++){ //find the index
                 current = current.nextFood();
+                index = count;
             }
             current.setNext(node); //insert node at the end
         } 
@@ -52,16 +53,19 @@ public class GroceryLinkedList {
             head = node; //Insert at head
         }
         //insert at specified point
-        else{
-            FoodNode current = head; //traverse at head
-            head = current.nextFood();
-            while((current.nextFood() != null) && (!current.foodName().equals(food))){
-                current = current.nextFood();
-                if(current.foodName().equals(food)){
-                    current.setNext(node);
-                    index++; //insert node at the end
+        FoodNode current = head; //traverse at head
+        while(current.nextFood() != null){
+            current = current.nextFood();
+            if(current.foodName().equals(food)){
+                FoodNode previous = current.next;
+                current.setNext(node);
+                current = current.next;
+                index++;
+                while(previous.nextFood() != null){
+                    current.setNext(previous);
+                    index++;
+                    previous = previous.nextFood();
                 }
-                
             }
         } 
     }
@@ -73,7 +77,7 @@ public class GroceryLinkedList {
             head = node; //insert at head
 
         else{
-            FoodNode current = head;
+            FoodNode current = head; 
             head = node;
             head.next = current;
         }

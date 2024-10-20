@@ -2,7 +2,7 @@
  * Name: Wren Nguyen
  * Date: Oct 2024
  * Project: LinkedList Introduction
- * Description: Main is for testing
+ * Description: Main runs all the test
 */
 
 package com.lists;
@@ -12,18 +12,18 @@ public class Main {
 
         //TEST 1
         GroceryLinkedList test = new GroceryLinkedList();
-        test.insertAtEnd(new FoodNode("milk"));
-        test.insertAtEnd(new FoodNode("bananas"));
-        test.insertAtEnd(new FoodNode("ice cream"));
-        test.insertAtEnd(new FoodNode("spinach"));
-        test.insertAtEnd(new FoodNode("chicken"));
+        test.insert(new FoodNode("milk"), 0);
+        test.insert(new FoodNode("bananas"), 1);
+        test.insert(new FoodNode("ice cream"), 2);
+        test.insert(new FoodNode("spinach"), 3);
+        test.insert(new FoodNode("chicken"), 4);
         System.out.println("Test 1");
-        test.print(); //works when null
+        test.print(); 
 
         //TEST 2
         System.out.println("\n" + "Test 2");
         System.out.println(test.remove("ice cream"));
-        test.print(); //works when null
+        test.print();
 
         //TEST 3
         System.out.println("\n" + "Test 3");
@@ -44,7 +44,6 @@ public class Main {
         //TEST 6
         System.out.println("\n" + "Test 6");
         test.insertAtStart(new FoodNode("onions"));
-        System.out.println(test.find("onions"));
         test.print();
 
         //TEST 7

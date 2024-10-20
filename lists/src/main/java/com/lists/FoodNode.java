@@ -27,10 +27,6 @@ public class FoodNode {
 
     //sets the next node
     public void setNext(FoodNode nextPtr){
-        next = nextPtr;
-    }
-
-    public int getIndex(int index){
-        return index;
+        this.next = nextPtr;
     }
 }
